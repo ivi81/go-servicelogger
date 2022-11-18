@@ -11,11 +11,11 @@ import (
 	"runtime"
 
 	"github.com/sirupsen/logrus"
-	"gitlab.cloud.gcm/i.ippolitov/go-microconfig/microconfig"
+	"gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config"
 )
 
 //NewLogger создает объект логгер
-func NewLogger(cfg *microconfig.LoggerCfg) Logger {
+func NewLogger(cfg *config.ServiceLoggerCfg) Logger {
 
 	l := logrus.New()
 	switch cfg.LogFormat {
@@ -33,13 +33,13 @@ func NewLogger(cfg *microconfig.LoggerCfg) Logger {
 	return Logger{logrus.NewEntry(l)}
 }
 
-func newTextFormatter(cfg *microconfig.LoggerCfg) *logrus.TextFormatter {
+func newTextFormatter(cfg *config.ServiceLoggerCfg) *logrus.TextFormatter {
 	formatter := &logrus.TextFormatter{}
 
 	return formatter
 }
 
-func newJsonFormatter(cfg *microconfig.LoggerCfg) *logrus.JSONFormatter {
+func newJsonFormatter(cfg *config.ServiceLoggerCfg) *logrus.JSONFormatter {
 	formatter := &logrus.JSONFormatter{
 		CallerPrettyfier: func(frame *runtime.Frame) (function string, file string) {
 			filename := path.Base(frame.File)
@@ -51,7 +51,7 @@ func newJsonFormatter(cfg *microconfig.LoggerCfg) *logrus.JSONFormatter {
 }
 
 //regHook производит получателей логов (места куда будут отправляться логи сервиса, файл, stdout и т.д.)
-func regHook(cfg *microconfig.LoggerCfg) *writerHook {
+func regHook(cfg *config.ServiceLoggerCfg) *writerHook {
 
 	hook := writerHook{
 		LogLevel: setLogLevel(cfg.LogLevel),
