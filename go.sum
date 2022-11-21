@@ -16,8 +16,8 @@ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKsk=
 gitlab.cloud.gcm/i.ippolitov/debugging v0.0.0-20221109122848-69aca373a7b8 h1:HISFIahs8gTfQEYWG3E7SlA8az390FLvYVXmtWluzHM=
 gitlab.cloud.gcm/i.ippolitov/debugging v0.0.0-20221109122848-69aca373a7b8/go.mod h1:Elv5duvgBwrL1fnSpeZVm++P1MI1pVR6QJ4smbnPMdo=
-gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121083045-b7f8a6b7a932 h1:vxd5rcB927AYDoU5k4LuB5fKQQAUtz2F4aMSXPBJipY=
-gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121083045-b7f8a6b7a932/go.mod h1:DScLmrxvwqv2RcBFjT9UKphwhih3N4bYaeZcO89MJVw=
+gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121102624-6d46879ab1e0 h1:Zxoa0f17tlUGUfIvhGQ6UubGdtSnigyDt4hIcJQlK0A=
+gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121102624-6d46879ab1e0/go.mod h1:x7JlUsQQi8konijtoAsRAFd1in2CJqauPdfnCmWcD+c=
 golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 h1:0A+M6Uqn+Eje4kHMK80dtF3JCXC4ykBgQG4Fe06QRhQ=
 golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
