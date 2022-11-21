@@ -4,7 +4,8 @@ go 1.18
 
 require (
 	github.com/sirupsen/logrus v1.9.0
-	gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.1.1
+	gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121083045-b7f8a6b7a932
+
 )
 
 require (
