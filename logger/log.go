@@ -15,7 +15,7 @@ import (
 )
 
 //NewLogger создает объект логгер
-func NewLogger(cfg *config.ServiceLoggerCfg) Logger {
+func NewLogger(cfg *config.LoggerCfg) Logger {
 
 	l := logrus.New()
 	switch cfg.LogFormat {
@@ -33,13 +33,13 @@ func NewLogger(cfg *config.ServiceLoggerCfg) Logger {
 	return Logger{logrus.NewEntry(l)}
 }
 
-func newTextFormatter(cfg *config.ServiceLoggerCfg) *logrus.TextFormatter {
+func newTextFormatter(cfg *config.LoggerCfg) *logrus.TextFormatter {
 	formatter := &logrus.TextFormatter{}
 
 	return formatter
 }
 
-func newJsonFormatter(cfg *config.ServiceLoggerCfg) *logrus.JSONFormatter {
+func newJsonFormatter(cfg *config.LoggerCfg) *logrus.JSONFormatter {
 	formatter := &logrus.JSONFormatter{
 		CallerPrettyfier: func(frame *runtime.Frame) (function string, file string) {
 			filename := path.Base(frame.File)
@@ -51,7 +51,7 @@ func newJsonFormatter(cfg *config.ServiceLoggerCfg) *logrus.JSONFormatter {
 }
 
 //regHook производит получателей логов (места куда будут отправляться логи сервиса, файл, stdout и т.д.)
-func regHook(cfg *config.ServiceLoggerCfg) *writerHook {
+func regHook(cfg *config.LoggerCfg) *writerHook {
 
 	hook := writerHook{
 		LogLevel: setLogLevel(cfg.LogLevel),
