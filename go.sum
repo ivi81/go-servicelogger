@@ -18,6 +18,8 @@ gitlab.cloud.gcm/i.ippolitov/debugging v0.0.0-20221109122848-69aca373a7b8 h1:HIS
 gitlab.cloud.gcm/i.ippolitov/debugging v0.0.0-20221109122848-69aca373a7b8/go.mod h1:Elv5duvgBwrL1fnSpeZVm++P1MI1pVR6QJ4smbnPMdo=
 gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121102624-6d46879ab1e0 h1:Zxoa0f17tlUGUfIvhGQ6UubGdtSnigyDt4hIcJQlK0A=
 gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221121102624-6d46879ab1e0/go.mod h1:x7JlUsQQi8konijtoAsRAFd1in2CJqauPdfnCmWcD+c=
+gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221123144640-a9ce17790ad6 h1:PRuNbmg+SGF6L7nTOgPHUCH0C6z7SPIJqw/bZk+ubmk=
+gitlab.cloud.gcm/i.ippolitov/go-microconfig v0.0.0-20221123144640-a9ce17790ad6/go.mod h1:x7JlUsQQi8konijtoAsRAFd1in2CJqauPdfnCmWcD+c=
 golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 h1:0A+M6Uqn+Eje4kHMK80dtF3JCXC4ykBgQG4Fe06QRhQ=
 golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
