@@ -1,42 +1,58 @@
 package config_test
 
-//TestLoggerCfg тест для тестирования полей структуры конфигурирования параметров логирования
-/*func TestLoggerCfg(t *testing.T) {
+import (
+	"log"
+	"os"
+	"testing"
 
-	if testing.Short() {
-		t.Skip()
+	"github.com/joho/godotenv"
+	"github.com/stretchr/testify/assert"
+
+	"gitlab.cloud.gcm/i.ippolitov/go-microconfig/v2"
+	"gitlab.cloud.gcm/i.ippolitov/go-microconfig/v2/env"
+	"gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config"
+	"gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config/cons"
+)
+
+func TestMain(m *testing.M) {
+	if err := godotenv.Load("./test_data/.test.env"); err != nil {
+		log.Println(" No .env file found")
 	}
+	//Создаем перменную окружения хранящую путь к файлам конфигурации
+	EnvKeyConfigPath := env.JoinStr(cons.LogEnvPrefix, "CONFIG_PATH")
+	os.Setenv(EnvKeyConfigPath, "./test_data/config")
 
-	testCfg := microconfig.LoggerCfg{}
+	//Задаем название среды развертывания
+	os.Setenv("STAGE", "test")
 
-	b := LoadTestData(t, "LoggerCfg.yaml")
-
-	err := yaml.Unmarshal(b, &testCfg)
-	assert.NoError(t, err, GetTypeName(testCfg)+": yaml Unmarshal error")
-
-	LoadTestEnvData(t, "loggercfg.env")
-	cfg := microconfig.LoggerCfg{}
-	cfg.SetValuesFromEnv("")
-
-	LoggerCfgAssert(t, testCfg, cfg, "", "")
+	os.Exit(m.Run())
 }
-*/
 
-//LoggerCfgSute утверждения для тестирования значений в специфичных для структуры LoggerCfg полях
-/*func LoggerCfgAssert(t *testing.T, testCfg, Cfg microconfig.LoggerCfg, hiLeveTypeName, hiLevelPath string) {
+func TestLoggerCfg(t *testing.T) {
 
-	currentTypeName, fieldPath := CreateFildPathhiLevel(hiLeveTypeName, hiLevelPath, testCfg)
+	t.Run("TEST0 : load Cfg from env", func(t *testing.T) {
 
-	testLogServ := testCfg.LogService
-	LogServCfg := Cfg.LogService
+		testCfg := config.LoggerCfg{}
 
-	currentFieldPath := strings.Join([]string{fieldPath, "LogService"}, fieldSpliter)
-	BasicClientCfgAssert(t, testLogServ.BasicClientCfg, LogServCfg.BasicClientCfg, currentTypeName, currentFieldPath)
+		expectedCfg := config.LoggerCfg{
+			Mode:             []cons.Mode{cons.LOGMODSTDIN, cons.LOGMODFILE, cons.LOGMODSTORAGE},
+			Path:             "another/path/to/file",
+			LogLevel:         []cons.Level{cons.LOGLEVELINFO, cons.LOGLEVELWARN, cons.LOGLEVELERR},
+			LogFormat:        cons.JSONFORMAT,
+			DisableTimeStamp: true,
+			LogStorage: config.ClientLogsStorageCfg{
+				Host: "zabbix.cloud",
+				Port: 3333,
+			},
+		}
 
-	currentFieldPath = strings.Join([]string{fieldPath, "Mode"}, fieldSpliter)
-	FieldTestAssert(t, currentFieldPath, testCfg.Mode, Cfg.Mode)
+		err := microconfig.CfgLoad(&testCfg, cons.LogEnvPrefix, false)
 
-	currentFieldPath = strings.Join([]string{fieldPath, "Path"}, fieldSpliter)
-	FieldTestAssert(t, currentFieldPath, testCfg.Path, Cfg.Path)
+		if assert.NoError(t, err) {
+			assert.EqualValues(t, expectedCfg, testCfg)
+		} else {
+			assert.ErrorContains(t, err, "no such file or directory")
+		}
+	})
+
 }
-*/

@@ -1,5 +1,5 @@
-//log.go содержит функционал создания и настройки объекта логера
-//в качестве ядра логирования используется библиотека logrus
+// log.go содержит функционал создания и настройки объекта логера
+// в качестве ядра логирования используется библиотека logrus
 package logger
 
 import (
@@ -10,11 +10,12 @@ import (
 	"path"
 	"runtime"
 
+	"github.com/ivi81/enummethods/enumerator"
 	"github.com/sirupsen/logrus"
 	"gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config"
 )
 
-//NewLogger создает объект логгер
+// NewLogger создает объект логгер
 func NewLogger(cfg *config.LoggerCfg) Logger {
 
 	l := logrus.New()
@@ -50,7 +51,7 @@ func newJsonFormatter(cfg *config.LoggerCfg) *logrus.JSONFormatter {
 	return formatter
 }
 
-//regHook производит получателей логов (места куда будут отправляться логи сервиса, файл, stdout и т.д.)
+// regHook производит получателей логов (места куда будут отправляться логи сервиса, файл, stdout и т.д.)
 func regHook(cfg *config.LoggerCfg) *writerHook {
 
 	hook := writerHook{
@@ -74,13 +75,13 @@ func regHook(cfg *config.LoggerCfg) *writerHook {
 	return &hook
 }
 
-//setLogLevel переводит значения строк описывающих уровни логирования во внутренние значения данных уровней в logrus
-//если список strL пуст то возвращает список всех уровней logrus.AllLevels
-func setLogLevel(strL []string) []logrus.Level {
+// setLogLevel переводит значения строк описывающих уровни логирования во внутренние значения данных уровней в logrus
+// если список strL пуст то возвращает список всех уровней logrus.AllLevels
+func setLogLevel(strL []enumerator.Stringer) []logrus.Level {
 
 	var l []logrus.Level
 	for _, strLevel := range strL {
-		if level, err := logrus.ParseLevel(strLevel); err == nil {
+		if level, err := logrus.ParseLevel(strLevel.String()); err == nil {
 			l = append(l, level)
 		}
 	}
@@ -90,7 +91,7 @@ func setLogLevel(strL []string) []logrus.Level {
 	return l
 }
 
-//find поиск строки в срезе строк (вспомогательная функция)
+// find поиск строки в срезе строк (вспомогательная функция)
 func find(s []string, x string) bool {
 	for _, str := range s {
 		if str == x {
