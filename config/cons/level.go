@@ -8,7 +8,7 @@ package cons
 
 // Level - тип необходимый для сопоставления набора строковых значений их индексам
 // возможные значения для настройки формата логгирования
-type Level int
+type Level uint32
 
 const (
 	info = Level(iota)

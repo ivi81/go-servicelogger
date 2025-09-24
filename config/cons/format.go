@@ -8,7 +8,7 @@ package cons
 
 // Format - тип необходимый для сопоставления набора строковых значений их индексам
 // возможные значения для настройки формата логгирования
-type Format int
+type Format uint32
 
 const (
 	text = Format(iota)
