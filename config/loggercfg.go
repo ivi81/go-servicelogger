@@ -1,7 +1,10 @@
 // loggercfg.go - содержит описание структуры для параметров конфигурации
 package config
 
-import "gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config/cons"
+import (
+	"github.com/ivi81/enummethods/enumerator"
+	"gitlab.cloud.gcm/i.ippolitov/go-servicelogger/config/cons"
+)
 
 // LoggerCfg -описывает параметры конфигурации логировния
 // Поле Mode задает режим работы логера и должно иметь значение из следующего списка:
@@ -19,6 +22,11 @@ type LoggerCfg struct {
 
 // ClientLogsStorage описывает параметры подключения к хранилищу логов
 type ClientLogsStorageCfg struct {
-	Host string `yaml:"host" env:"HOST"`
-	Port int    `yaml:"port" env:"PORT"`
+	Service string `yaml:"sevice" env:"SERVICE"`
+	Host    string `yaml:"host" env:"HOST"`
+	Port    int    `yaml:"port" env:"PORT"`
+}
+
+type Enumerator interface {
+	enumerator.Enumerator
 }
